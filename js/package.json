@@ -8,7 +8,7 @@
     "webpack-cli": "^3.0.7"
   },
   "scripts": {
-    "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "dev": " webpack --mode development --watch",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --mode production"
   }
 }

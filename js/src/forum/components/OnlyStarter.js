@@ -71,9 +71,13 @@ export default function () {
           }
     
           if (postAuthor === discussionAuthor && checkFP(post)) {
-            vnode.children.push(
-              <span className="topicStarter">{labelText}</span>
-            );
+              const topicStarter = <span className="topicStarter">{labelText}</span>;
+              // 寻找用户名元素的位置
+              const usernameIndex = vnode.children.findIndex(child => {
+                  return child.attrs && child.attrs.className === 'PostUser-name';
+              });
+              // 在用户名元素后插入你的元素
+              vnode.children.splice(usernameIndex + 1, 0, topicStarter);
           }else{
             if (onlyStarter){
                 $(".CommentPost").each(function(){
@@ -105,8 +109,5 @@ export default function () {
                   )
 
         );
-
-        
-        
     });
 }
